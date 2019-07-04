@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration debug="true">
+
+  <appender name="CUSTOM" class="com.cloud.config.client.CustomAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%-5p [%d{yyyyMMdd HH:mm:ss:SSS}] %thread \(%F:%L\) [%X{tid}] %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="ASYNC_CUSTOM" class="ch.qos.logback.classic.AsyncAppender">
+    <param name="includeCallerData" value="true"/>
+    <param name="discardingThreshold" value="10" />
+    <param name="queueSize" value="1024" />
+    <appender-ref ref="CUSTOM" />
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="ASYNC_CUSTOM"/>
+  </root>
+</configuration>
+

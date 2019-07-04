@@ -1,0 +1,9 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["refresh"]
+
+logging:
+  config: http://localhost:8888/**/local/config/logback-spring.xml
+
